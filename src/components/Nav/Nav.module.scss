@@ -1,0 +1,100 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    &__logo{
+        max-width: 65px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+        h2{
+            font-size: 2rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+    }
+    &__menu{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        transition: 0.15s;
+        display: flex;
+        gap: 1rem;
+        &.open{
+            opacity: 1;
+        }
+        &.closed{
+            opacity: 0;
+        }
+    }
+    &__hamburger{
+        position: relative;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.25rem;
+        align-items: end;
+        flex-direction: column;
+        border-radius: 100%;
+        padding: 1rem;
+        border: 3px solid var(--quaternary);
+        background-color: var(--tertiary);
+        transition: 0.25s all;
+        &.open{
+            width: 300px;
+            border-radius: 9999px;
+            &::before{
+                content: '';
+                width: 0;
+                height: 0;
+                border: 0px solid var(--quaternary);
+            }
+            .line:first-of-type{
+                transform: rotate(45deg) translateY(100%);
+            }
+            .line:nth-of-type(2){
+                opacity: 0;
+            }
+            .line:last-of-type{
+                transform: rotate(-45deg);
+                transform: rotate(-45deg) translateY(-100%);
+            }
+        }
+        &.closed{
+            background-color: var(--tertiary);
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-color: antiquewhite;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            border-radius: 100%;
+            border: 3px solid var(--quaternary);
+            z-index: 1;
+            background-color: var(--secondary);
+        }
+
+        cursor: pointer;
+        .line{
+            height: 3px;
+            width: 20px;
+            border-radius: 15px;
+            background-color: var(--quaternary);
+            z-index: 1;
+            transition: 0.25s;
+        }
+    }
+}
