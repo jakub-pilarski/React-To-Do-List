@@ -23,78 +23,113 @@
     &__menu{
         position: absolute;
         top: 50%;
-        left: 50%;
-        translate: -50% -50%;
-        transition: 0.15s;
+        left: 0;
+        translate: 0 -50%;
+        transition: 0.25s;
         display: flex;
+        justify-content: space-between;
+        width: 200px;
         gap: 1rem;
+        font-size: 1.25rem;
+        overflow: hidden;
         &.open{
-            opacity: 1;
+            transform: translateY(0) translateX(-150%);
         }
         &.closed{
+            transform: translateY(-200%) translateX(-150%);
             opacity: 0;
         }
     }
     &__hamburger{
         position: relative;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        justify-content: space-between;
-        gap: 0.25rem;
-        align-items: end;
-        flex-direction: column;
-        border-radius: 100%;
-        padding: 1rem;
-        border: 3px solid var(--quaternary);
-        background-color: var(--tertiary);
-        transition: 0.25s all;
-        &.open{
-            width: 300px;
-            border-radius: 9999px;
+        width: 65px;
+        height: 65px;
+        &__button{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 100%;
+            padding: 1rem;
+            border: 3px solid var(--quaternary);
+            background-color: var(--tertiary);
+            transform-origin: center;
+            transition: 0.25s all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            .hamburger{
+                z-index: 1;
+                fill: var(--quaternary);
+                .line{
+                    transition: 0.25s;
+                    transform-origin: center;
+                    &__top{
+
+                    }
+                    &__middle{
+    
+                    }
+                    &__bottom{
+    
+                    }
+                }
+                
+            }
+            &[aria-expanded="true"]{
+                
+                &::before{
+                    content: '';
+                    transition: 0.25s all;
+                    width: 100%;
+                    height: 100%;
+                }
+                .line{
+                    &__top{
+                        y: 45;
+                        rotate: 45deg;
+                    }
+                    &__middle{
+                        opacity: 0;
+                    }
+                    &__bottom{
+                        y: 45;
+                        rotate: -45deg;
+                    }
+                }
+            }
+            &[aria-expanded="false"]{
+                &::before{
+                    content: '';
+                    transition: 0.25s all;
+                    width: 75%;
+                    height: 75%;
+                }
+                .line{
+                    &__top{
+
+                    }
+                    &__middle{
+    
+                    }
+                    &__bottom{
+    
+                    }
+                }
+            }
             &::before{
                 content: '';
-                width: 0;
-                height: 0;
-                border: 0px solid var(--quaternary);
+                width: 75%;
+                height: 75%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                border-radius: 100%;
+                border: 3px solid var(--quaternary);
+                z-index: 0;
+                background-color: var(--secondary);
             }
-            .line:first-of-type{
-                transform: rotate(45deg) translateY(100%);
-            }
-            .line:nth-of-type(2){
-                opacity: 0;
-            }
-            .line:last-of-type{
-                transform: rotate(-45deg);
-                transform: rotate(-45deg) translateY(-100%);
-            }
-        }
-        &.closed{
-            background-color: var(--tertiary);
-        }
-        &::before{
-            content: '';
-            position: absolute;
-            width: 35px;
-            height: 35px;
-            background-color: antiquewhite;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            border-radius: 100%;
-            border: 3px solid var(--quaternary);
-            z-index: 1;
-            background-color: var(--secondary);
-        }
-
-        cursor: pointer;
-        .line{
-            height: 3px;
-            width: 20px;
-            border-radius: 15px;
-            background-color: var(--quaternary);
-            z-index: 1;
-            transition: 0.25s;
         }
     }
 }
