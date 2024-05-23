@@ -11,7 +11,6 @@
   --tertiary: #FEB941;
   --quaternary: #DD761C;
 
-  color-scheme: light dark;
   color: var(--quaternary);
   background-color: var(--secondary);
 
